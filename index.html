@@ -10,8 +10,8 @@
     <div class="container">
         <h1>Car Cost Comparison</h1>
         <form id="costForm">
-            <h2>Cost Type</h2>
             <div>
+                <h2>Cost Type (Owning a Car)</h2>
                 <label>
                     <input type="radio" name="costType" value="average" checked onclick="toggleInputs('owningCar', false)"> Use Average Costs
                 </label>
@@ -40,23 +40,25 @@
                 </div>
             </div>
 
+            <div>
+                <h2>Cost Type (Carsharing)</h2>
+                <label>
+                    <input type="radio" name="carSharingCostType" value="average" checked onclick="toggleInputs('carSharing', false)"> Use Average Costs
+                </label>
+                <label>
+                    <input type="radio" name="carSharingCostType" value="personal" onclick="toggleInputs('carSharing', true)"> Enter Personal Costs
+                </label>
+            </div>
+
             <div id="carSharing">
                 <h2>Carsharing</h2>
                 <div>
-                    <label>
-                        <input type="radio" name="carSharingCostType" value="average" checked onclick="toggleInputs('carSharing', false)"> Use Average Costs
-                    </label>
-                    <label>
-                        <input type="radio" name="carSharingCostType" value="personal" onclick="toggleInputs('carSharing', true)"> Enter Personal Costs
-                    </label>
-                </div>
-                <div>
                     <label for="mileage">Daily Mileage (miles) (New York City):</label>
-                    <input type="number" id="mileage" value="9" oninput="updateCarsharingCost()">
+                    <input type="number" id="mileage" value="9" oninput="updateCarsharingCost()" disabled>
                 </div>
                 <div>
                     <label for="elapsedTime">Daily Elapsed Time (minutes) (New York City):</label>
-                    <input type="number" id="elapsedTime" value="27" oninput="updateCarsharingCost()">
+                    <input type="number" id="elapsedTime" value="27" oninput="updateCarsharingCost()" disabled>
                 </div>
             </div>
 
