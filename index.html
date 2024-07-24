@@ -13,10 +13,10 @@
             <h2>Cost Type</h2>
             <div>
                 <label>
-                    <input type="radio" name="costType" value="average" checked onclick="toggleInputs(false)"> Use Average Costs
+                    <input type="radio" name="costType" value="average" checked onclick="toggleInputs('owningCar', false)"> Use Average Costs
                 </label>
                 <label>
-                    <input type="radio" name="costType" value="personal" onclick="toggleInputs(true)"> Enter Personal Costs
+                    <input type="radio" name="costType" value="personal" onclick="toggleInputs('owningCar', true)"> Enter Personal Costs
                 </label>
             </div>
 
@@ -35,13 +35,21 @@
                     <input type="number" id="fuel" value="150" disabled>
                 </div>
                 <div>
-                    <label for="maintenance">Average Yearly Maintenance Costs ($):</label>
-                    <input type="number" id="maintenance" value="700" disabled>
+                    <label for="maintenance">Yearly Maintenance Costs ($):</label>
+                    <input type="number" id="maintenance" value="900" disabled>
                 </div>
             </div>
 
             <div id="carSharing">
                 <h2>Carsharing</h2>
+                <div>
+                    <label>
+                        <input type="radio" name="carSharingCostType" value="average" checked onclick="toggleInputs('carSharing', false)"> Use Average Costs
+                    </label>
+                    <label>
+                        <input type="radio" name="carSharingCostType" value="personal" onclick="toggleInputs('carSharing', true)"> Enter Personal Costs
+                    </label>
+                </div>
                 <div>
                     <label for="mileage">Daily Mileage (miles) (New York City):</label>
                     <input type="number" id="mileage" value="9" oninput="updateCarsharingCost()">
