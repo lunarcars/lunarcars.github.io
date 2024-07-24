@@ -1,15 +1,17 @@
 let chart;  // Declare the chart variable globally
 
-function toggleInputs(enable) {
-    document.getElementById('carPrice').disabled = !enable;
-    document.getElementById('insurance').disabled = !enable;
-    document.getElementById('fuel').disabled = !enable;
-    
-    // Ensure maintenance is always disabled
-    document.getElementById('maintenance').disabled = true;
+function toggleInputs(section, enable) {
+    const inputs = document.querySelectorAll(`#${section} input`);
+    inputs.forEach(input => {
+        if (input.id !== 'carsharingCost' && input.id !== 'maintenance') {
+            input.disabled = !enable;
+        }
+    });
 
-    const carPriceLabel = document.getElementById('carPriceLabel');
-    carPriceLabel.textContent = enable ? 'Your Car Price ($):' : 'Average New Car Price ($):';
+    if (section === 'owningCar') {
+        const carPriceLabel = document.getElementById('carPriceLabel');
+        carPriceLabel.textContent = enable ? 'Your Car Price ($):' : 'Average New Car Price ($):';
+    }
 }
 
 function updateCarsharingCost() {
@@ -25,11 +27,9 @@ function calculateCosts() {
     const fuel = parseFloat(document.getElementById('fuel').value) * 12;
     const maintenance = parseFloat(document.getElementById('maintenance').value);
     const carsharingCost = parseFloat(document.getElementById('carsharingCost').value) * 365;
-    const mileage = parseFloat(document.getElementById('mileage').value) * 0.13 * 365;
-    const elapsedTime = parseFloat(document.getElementById('elapsedTime').value) * 0.20 * 365;
 
     const owningCost = (carPrice + (insurance + fuel + maintenance) * 10).toFixed(2);
-    const carsharingTotalCost = ((carsharingCost + mileage + elapsedTime) * 10).toFixed(2);
+    const carsharingTotalCost = (carsharingCost * 10).toFixed(2);
 
     document.getElementById('results').innerHTML = `
         <h2>Results</h2>
@@ -131,4 +131,7 @@ window.onload = function() {
             }
         }
     });
+
+    // Ensure maintenance input is always disabled
+    document.getElementById('maintenance').disabled = true;
 }
