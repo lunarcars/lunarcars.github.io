@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Cost Comparison</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Car Cost Comparison</h1>
+        <form id="costForm">
+            <h2>Cost Type</h2>
+            <div>
+                <label>
+                    <input type="radio" name="costType" value="average" checked onclick="toggleInputs(false)"> Use Average Costs
+                </label>
+                <label>
+                    <input type="radio" name="costType" value="personal" onclick="toggleInputs(true)"> Enter Personal Costs
+                </label>
+            </div>
+
+            <div id="owningCar">
+                <h2>Owning a Car</h2>
+                <div>
+                    <label for="carPrice" id="carPriceLabel">Average New Car Price ($):</label>
+                    <input type="number" id="carPrice" value="47433" disabled>
+                </div>
+                <div>
+                    <label for="insurance">Monthly Car Insurance ($):</label>
+                    <input type="number" id="insurance" value="140" disabled>
+                </div>
+                <div>
+                    <label for="fuel">Monthly Fuel Costs ($):</label>
+                    <input type="number" id="fuel" value="150" disabled>
+                </div>
+                <div>
+                    <label for="maintenance">Average Yearly Maintenance Costs ($):</label>
+                    <input type="number" id="maintenance" value="700" disabled>
+                </div>
+            </div>
+
+            <div id="carSharing">
+                <h2>Carsharing</h2>
+                <div>
+                    <label for="mileage">Daily Mileage (miles) (New York City):</label>
+                    <input type="number" id="mileage" value="9" oninput="updateCarsharingCost()">
+                </div>
+                <div>
+                    <label for="elapsedTime">Daily Elapsed Time (minutes) (New York City):</label>
+                    <input type="number" id="elapsedTime" value="27" oninput="updateCarsharingCost()">
+                </div>
+            </div>
+
+            <button type="button" onclick="calculateCosts()">Calculate</button>
+            
+            <div>
+                <label for="carsharingCost">Daily Carsharing Cost ($):</label>
+                <input type="number" id="carsharingCost" value="9" disabled>
+            </div>
+        </form>
+        <div id="results"></div>
+        <h2>Investment Growth Over 10 Years</h2>
+        <canvas id="investmentGraph" width="600" height="400"></canvas>
+        <div id="investmentResult"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
